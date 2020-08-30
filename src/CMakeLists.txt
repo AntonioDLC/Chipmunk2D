@@ -30,6 +30,9 @@ if(BUILD_SHARED)
   if(ANDROID OR UNIX)
 	  # need to explicitly link to the math library because the CMake/Android toolchains may not do it automatically
 	  target_link_libraries(chipmunk m)
+	  if(ANDROID)
+		  target_link_libraries(chipmunk android log)
+	  endif(ANDROID)
   endif(ANDROID OR UNIX)
   install(TARGETS chipmunk RUNTIME DESTINATION ${BIN_INSTALL_DIR}
                            LIBRARY DESTINATION ${LIB_INSTALL_DIR}
